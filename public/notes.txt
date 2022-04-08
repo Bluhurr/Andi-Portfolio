@@ -1,0 +1,8 @@
+--- Random Notes and Stuff ---
+
+> Mui has a component, "ImageList", that will be super useful
+for displaying Andi's works
+  - They have different variations that allow you to include
+  details and such too
+
+
