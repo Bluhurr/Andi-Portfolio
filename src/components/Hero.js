@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { Navigation, Pagination, Scrollbar, Autoplay, EffectFade, EffectFlip } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/effect-fade';
+import 'swiper/css/effect-flip';
+
 
 const styles = {
-  heroImage: {
-    width: '100%',
+  sliderHero: {
+    width: '80%',
     height: '90vh',
-    backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/andi-ceramics.jpg'})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
+    //boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.3)',
+    marginBottom: '100px',
+  },
+  slide: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center center'
   },
 };
 
@@ -30,11 +46,42 @@ const theme = createTheme({
   },
 });
 
-const Hero = () => {
+const Hero = ({ images }) => {
+
+  useEffect(()=>{
+    document.documentElement.style.setProperty("--swiper-theme-color", "#fff");
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
-      <div style={styles.heroImage}></div>
-    </ThemeProvider>
+    <Swiper
+      modules={[Navigation, EffectFlip, Pagination, Autoplay]}
+      navigation
+      grabCursor={true}
+      speed={1600}
+      effect
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      slidesPerView={1}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      style={styles.sliderHero}
+      pagination={{clickable: true}}
+    >
+      <SwiperSlide style={styles.slide}>
+        <img style={styles.image} src={images[0]}/>
+      </SwiperSlide>
+      <SwiperSlide style={styles.slide}>
+        <img style={styles.image} src={images[1]}/>
+      </SwiperSlide>
+      <SwiperSlide style={styles.slide}>
+        <img style={styles.image} src={images[2]}/>
+      </SwiperSlide>
+      <SwiperSlide style={styles.slide}>
+        <img style={styles.image} src={images[3]}/>
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

@@ -4,5 +4,8 @@
 for displaying Andi's works
   - They have different variations that allow you to include
   details and such too
-
+> Should do a appearing/disappearing navbar
+> For Firefox - no the nav, I'll probably check that feature is
+   not supported and then just do a bit of different styling in
+   that case.
 

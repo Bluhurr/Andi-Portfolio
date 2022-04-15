@@ -1,0 +1,12 @@
+
+.image-list::-webkit-scrollbar {
+  display: none;
+}
+
+.image-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: unset;
+  gap: 20px !important;
+}
+
